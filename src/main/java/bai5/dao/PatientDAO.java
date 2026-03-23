@@ -8,7 +8,6 @@ import java.util.List;
 
 public class PatientDAO {
 
-    // 1. Lấy danh sách
     public List<Patient> getAll() {
         List<Patient> list = new ArrayList<>();
         String sql = "SELECT * FROM Patients";
@@ -32,7 +31,6 @@ public class PatientDAO {
         return list;
     }
 
-    // 2. Thêm bệnh nhân
     public void insert(Patient p) {
         String sql = "INSERT INTO Patients(name, age, department, disease, days_admitted) VALUES(?, ?, ?, ?, ?)";
 
@@ -53,7 +51,6 @@ public class PatientDAO {
         }
     }
 
-    // 3. Update bệnh
     public boolean updateDisease(int id, String disease) {
         String sql = "UPDATE Patients SET disease = ? WHERE id = ?";
 
@@ -71,7 +68,6 @@ public class PatientDAO {
         }
     }
 
-    // 4. Lấy số ngày
     public int getDays(int id) {
         String sql = "SELECT days_admitted FROM Patients WHERE id = ?";
 
@@ -92,7 +88,6 @@ public class PatientDAO {
         return -1;
     }
 
-    // 5. Xóa
     public void delete(int id) {
         String sql = "DELETE FROM Patients WHERE id = ?";
 
@@ -107,7 +102,6 @@ public class PatientDAO {
         }
     }
 
-    // 6. Gọi stored procedure
     public double calculateFee(int days) {
         String sql = "{call CALCULATE_DISCHARGE_FEE(?, ?)}";
 
